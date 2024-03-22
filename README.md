@@ -27,3 +27,7 @@ Projeto para a avaliação **A3** da UC de **Estruturas Matemáticas** cujo o te
   ```shell
     make run
   ```
+
+## Até agora
+
+![1711071901542](assets/readme/1711071901542.png)
