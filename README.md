@@ -31,3 +31,4 @@ Projeto para a avaliação **A3** da UC de **Estruturas Matemáticas** cujo o te
 ## Até agora
 
 ![1711071901542](assets/readme/1711071901542.png)
+![1711117952619](assets/readme/1711117952619.png)

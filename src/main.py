@@ -1,13 +1,8 @@
 import pygame
-from snake import Snake
 import consts
+from snake import Snake
+from food import Food
 
-snake = Snake(
-    position=(consts.screen[0] / 2, consts.screen[1] / 2),
-    velocity=(0, 0),
-    pixels=[],
-    size=1,
-)
 
 pygame.init()
 
@@ -15,6 +10,15 @@ screen = pygame.display.set_mode(consts.screen)
 clock = pygame.time.Clock()
 running = True
 
+food = Food(screen)
+snake = Snake(
+    food=food,
+    screen=screen,
+    position=(consts.screen[0] / 2, consts.screen[1] / 2),
+    velocity=(0, 0),
+    pixels=[],
+    size=1,
+)
 
 while running:
     for event in pygame.event.get():
@@ -25,11 +29,16 @@ while running:
 
     screen.fill(consts.bg_color)
 
+    food.paint()
+
     snake.move()
     snake.gen()
-    snake.paint(screen)
+    snake.paint()
 
     pygame.display.update()
+
+    snake.eat()
+
     clock.tick(consts.fps)
 
 pygame.quit()
