@@ -1,4 +1,5 @@
 import pygame
+
 import consts
 from food import Food
 
@@ -10,15 +11,16 @@ class Snake:
     velocity: tuple[float, float]
     pixels: list
     size: int
+    gameOver: bool
 
     def __init__(
-        self,
-        screen: pygame.Surface,
-        food: Food,
-        position: tuple[float, float],
-        velocity: tuple[float, float],
-        pixels: list,
-        size: int,
+            self,
+            screen: pygame.Surface,
+            food: Food,
+            position: tuple[float, float],
+            velocity: tuple[float, float],
+            pixels: list,
+            size: int,
     ) -> None:
         self.screen = screen
         self.food = food
@@ -26,6 +28,7 @@ class Snake:
         self.velocity = velocity
         self.pixels = pixels
         self.size = size
+        self.gameOver = False
 
     def dir(self, key: int) -> None:
         """Sets the snake's direction"""
@@ -39,17 +42,26 @@ class Snake:
             self.velocity = (-consts.pixel, 0)
 
     def move(self) -> None:
-        """Move the snake in the x and y coordinates"""
-        self.position = (
+        new_position = (
             self.position[0] + self.velocity[0],
             self.position[1] + self.velocity[1],
         )
+
+        if new_position[0] < 0 or new_position[0] >= self.screen.get_width() or new_position[1] < 0 or new_position[
+            1] >= self.screen.get_height():
+            self.gameOver = True
+        else:
+            self.position = new_position
 
     def gen(self) -> None:
         """Generate a new position for snake"""
         self.pixels.append(self.position)
         if len(self.pixels) > self.size:
             del self.pixels[0]
+
+        # Verifica colisão consigo mesma
+        if self.pixels.count(self.position) > 1:
+            self.gameOver = True
 
     def eat(self) -> None:
         """Increase the size of the snake if it has eaten"""
@@ -70,3 +82,7 @@ class Snake:
                     consts.pixel,
                 ],
             )
+
+    def game_over_condition(self) -> bool:
+        """Check if the game is over"""
+        return self.gameOver

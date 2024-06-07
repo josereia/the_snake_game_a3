@@ -5,13 +5,12 @@ names = ["Alice", "Bob", "Charlie", "David", "Emma", "Frank", "Grace", "Henry", 
 
 rankings = []
 for name in names:
-    ranking = {"name": name, "score": random.randint(0, 100)}
+    ranking = {"name": name, "score": random.randint(0, 10)}
     rankings.append(ranking)
 
 
-def add_ranking(user_name, score):
-    new_ranking = {"name": user_name, "score": score}
+def add_ranking(player, score):
+    new_ranking = {"name": player, "score": score}
     rankings.append(new_ranking)
-
-
-top_ranks = sorted(rankings, key=lambda x: x['score'], reverse=True)[:10]
+    rankings.sort(key=lambda x: x['score'], reverse=True)
+    return rankings[:10]
