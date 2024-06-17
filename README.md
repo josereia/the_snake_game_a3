@@ -15,13 +15,11 @@ Projeto para a avaliação **A3** da UC de **Estruturas Matemáticas** cujo o te
   ```shell
     make deps
   ```
-
 * Executar o ambiente virtual:
 
   ```shell
     make shell
   ```
-
 * Rodar o projeto
 
   ```shell
@@ -32,3 +30,5 @@ Projeto para a avaliação **A3** da UC de **Estruturas Matemáticas** cujo o te
 
 ![1711071901542](assets/readme/1711071901542.png)
 ![1711117952619](assets/readme/1711117952619.png)
+
+![1718656447345](assets/readme/1718656447345.png)

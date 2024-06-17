@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 pandas = "*"
 pygame = "*"
+pygame_gui = "*"
 
 [dev-packages]
 
